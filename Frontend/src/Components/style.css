@@ -1,0 +1,441 @@
+.banner{
+    padding: 20px 100px;
+    border-radius: 20px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner-text-image{
+    width: 100%;
+    display: flex!important;
+    height: 100%;
+}
+
+
+
+.banner-text-image .banner-text{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding-left: 200px;
+}
+
+.banner-text-image .banner-text .banner-title{
+    font-size: 52px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 800;
+    line-height: 1;
+    color: #434E6E;
+}
+
+.banner-text-image .banner-text .banner-para{
+    font-size: 14px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #888888;
+}
+
+
+.banner-text-image .banner-image{
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+.banner-text-image .banner-image img{
+   width: 100%;
+}
+
+
+.Side-Cart-Total-Price{
+    position: fixed;
+    top: 50%;
+    right:0%;
+    width: 120px;
+    height: 80px;
+    background: #434e6e;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    z-index: 111;
+
+}
+
+.Side-Cart-Total-Price .total-item{
+    width: 100%;
+    height: 50%;
+    background: #ffffff;
+}
+
+.Side-Cart-Total-Price .total-price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+.Side-Cart-Total-Price .total-price p{
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.Side-Cart-Total-Price .total-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+.Side-Cart-Total-Price .total-item p{
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 400;
+    color: #434e6e;
+}
+
+.button{
+    margin-top: 30px;
+    background: #434e6e;
+    width: 150px;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 30px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 1 !important;
+    z-index: 1;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.button:hover{
+    color: #ffffff;
+}
+
+.button img {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    z-index: -1;
+    max-width: 30px;
+  }
+
+
+  .button:hover img {
+    opacity: .20;
+    visibility: visible;
+    max-width: 30px;
+  }
+
+
+  .button img:nth-child(1) {
+    bottom: -15px;
+    left: -15px;
+    transition: 0.5s;
+  }
+
+  .button img:nth-child(2) {
+    top: -15px;
+    right: -15px;
+    transition: 0.5s;
+  }
+
+
+  .button:hover img:nth-child(1) {
+    bottom: 0;
+    left: 0;
+  }
+
+  .button:hover img:nth-child(2) {
+    top: 0;
+    right: 0;
+  }
+
+  .banner .banner-anim-arrow-default{
+    top: 80%!important;
+    padding: 10px 20px;
+    width: 47px;
+    height: 47px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+
+  .banner-anim-arrow-default.next {
+    right: 45%;
+  }
+  .banner-anim-arrow-default.prev {
+    left: 45%;
+  }
+  .banner-anim-arrow-default.next::after {
+    left: 25px;
+    background: #434E6E;
+    bottom: 11px;
+    width: 2px;
+  }
+  .banner-anim-arrow-default.next::before {
+    left: 25px;
+    background: #434E6E;
+    top: 11px;
+    width: 2px;
+  }
+
+  .banner-anim-arrow-default.prev::after {
+    left: 20px;
+    background: #434E6E;
+    bottom: 11px;
+    width: 2px;
+  }
+  .banner-anim-arrow-default.prev::before {
+    left: 20px;
+    background: #434E6E;
+    top: 11px;
+    width: 2px;
+  }
+
+  .ant-drawer-right .ant-drawer-content-wrapper {
+    height: 450px!important;
+    top: 174px;
+    width: 500px!important;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .single-card{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(236, 236, 236);
+    position: relative;
+  }
+  .single-card img{
+    width: 18%;
+  }
+
+  .single-card .name-price{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .single-card .name-price h3{
+    margin-top: 6px;
+    font-size: 16px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: #434E6E;
+  }
+  .single-card .name-price h4{
+    font-size: 14px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 400;
+    margin-bottom: 0;
+    color: #434E6E;
+  }
+
+
+
+  .single-card .sbutton{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+
+  .single-card .sbutton .anticon svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .single-card .sbutton .ant-btn{
+    border-radius: 10px;
+    background: #434E6E;
+    color: #ffffff;
+  }
+
+  .ant-drawer-body{
+    position: relative!important;
+  }
+
+  .total-btn{
+    border-top: 1px solid rgb(236, 236, 236);
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 90%;
+    bottom: 0;
+    box-sizing: border-box;
+    background: #ffffff;
+  }
+
+  .total-btn .ant-btn {
+    background: #434E6E;
+    font-size: 16px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    border-radius: 5px;
+
+
+  }
+
+   .overlay{
+    width: 100%;
+    height: 100%;
+    background: #434e6eca;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+
+
+
+
+.overlay .details-inc-dec{
+    margin-bottom: 0;
+    height: 100%!important;
+    border: none!important;
+    margin-top: 12px;
+  }
+
+  .overlay .inde{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+  }
+
+
+  .overlay .inde .ant-btn-icon-only{
+    padding: 15px!important;
+    height: 100%;
+    background: white;
+    width: 100%;
+    } 
+
+   .overlay .ant-btn-group{
+      background: #ffffff;
+      border-radius: 25px;
+      overflow: hidden;
+    }   
+
+    .compare-container .ant-card-grid{
+      justify-content: center;
+    }
+    .compare-container{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      text-align: left;
+    }
+    .compare-container .ant-card-grid{
+       text-align: left!important;
+       position: relative;
+    }
+    .compare-img{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .compare-img img{
+      width: 180px
+    }
+    .compare-container ul{
+      text-align: left;
+      padding-left: 10px;
+    }
+
+    .compare-container .ant-card-body{
+      padding: 10px!important;
+    }
+    .compare-container .ant-card{
+      height: 100%;
+  }
+
+
+    .compare-container h1{
+      font-weight: 600;
+      color: #434E6E;
+      margin: 0;
+    }
+    .compare-container h2{
+      font-weight: 600;
+      color: #ff7b00;
+
+    }
+
+    .scompare{
+      margin-top: 50px;
+    }
+    .search-list{
+      background: rgb(255, 255, 255);
+      transition: 0.5s;
+      max-height: 300px;
+      overflow-y: scroll;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+      position: absolute;
+      top: 56px;
+      padding: 0 20px;
+      width: 100%;
+
+    }
+    .search-list li{
+      margin: 10px 0;
+    }
+
+
+
+    .search-list::-webkit-scrollbar {
+      display: none;
+    }
+    
+  
+
+
+
+
+    .compare-left-right{
+      display: flex;
+      height: 100%;
+      justify-content: center;
+
+    }
+    .compare-left{
+      width: 50%;
+      height: 100%;
+      border-right: 1px solid rgb(236, 236, 236);
+    }
+    .compare-right{
+      width: 50%;
+      height: 100%;
+    }
