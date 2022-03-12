@@ -12,8 +12,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"Wardrobe",
         sold:102,
-        discout:"10%",
-        cupon:"SalaGorib"
+        discout:"10",
+        cupon:"SalaGorib",
+        shipping: 10
     },
     {
         pname:"Four Door Wardrobe",
@@ -28,8 +29,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"15%",
-        cupon:"Gorib"
+        discout:"15",
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Orange Classic Sofa",
@@ -44,8 +46,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"15%",
-        cupon:"Gorib"
+        discout:"15",
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Royal Ash Sofa",
@@ -60,8 +63,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"stool",
         sold:102,
-        discout:"15%",
-        cupon:"Gorib"
+        discout:"15",
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Royal Queen Black Chair",
@@ -76,8 +80,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"10%",
-        cupon:"SalaGorib"
+        discout:"10",
+        cupon:"SalaGorib",
+        shipping: 50
     },
     {
         pname:"White Luxury Sofa",
@@ -93,7 +98,8 @@ const ProductsData = [
         category:"chair",
         sold:102,
         discout:"15%",
-        cupon:"Gorib"
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Queen Black Chair",
@@ -108,8 +114,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"15%",
-        cupon:"Fokinni"
+        discout:"15",
+        cupon:"Fokinni",
+        shipping: 50
     },
     {
         pname:"Wooden Yellow Comfort",
@@ -124,8 +131,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"15%",
-        cupon:"Gorib"
+        discout:"15",
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Luxury Sofa",
@@ -140,8 +148,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"chair",
         sold:102,
-        discout:"15%",
-        cupon:"Fokinni"
+        discout:"15",
+        cupon:"Fokinni",
+        shipping: 50
     },
 
     {
@@ -157,8 +166,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"Wardrobe",
         sold:102,
-        discout:"10%",
-        cupon:"SalaGorib"
+        discout:"10",
+        cupon:"SalaGorib",
+        shipping: 50
     },
     {
         pname:"Four Door Wardrobe",
@@ -173,8 +183,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"15%",
-        cupon:"Gorib"
+        discout:"15",
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Orange Classic Sofa",
@@ -189,8 +200,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"15%",
-        cupon:"Gorib"
+        discout:"15",
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Royal Ash Sofa",
@@ -205,8 +217,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"stool",
         sold:102,
-        discout:"15%",
-        cupon:"Gorib"
+        discout:"15",
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Royal Queen Black Chair",
@@ -221,8 +234,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"10%",
-        cupon:"SalaGorib"
+        discout:"10",
+        cupon:"SalaGorib",
+        shipping: 50
     },
     {
         pname:"White Luxury Sofa",
@@ -237,8 +251,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"chair",
         sold:102,
-        discout:"15%",
-        cupon:"Gorib"
+        discout:"15",
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Queen Black Chair",
@@ -253,8 +268,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"15%",
-        cupon:"Fokinni"
+        discout:"15",
+        cupon:"Fokinni",
+        shipping: 50
     },
     {
         pname:"Wooden Yellow Comfort",
@@ -269,8 +285,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"sofa",
         sold:102,
-        discout:"15%",
-        cupon:"Gorib"
+        discout:"15",
+        cupon:"Gorib",
+        shipping: 50
     },
     {
         pname:"Luxury Sofa",
@@ -285,8 +302,9 @@ const ProductsData = [
         description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
         category:"chair",
         sold:102,
-        discout:"15%",
-        cupon:"Fokinni"
+        discout:"15",
+        cupon:"Fokinni",
+        shipping: 50
     },
 
 

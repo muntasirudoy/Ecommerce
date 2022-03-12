@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Navbar from './Layout/Navbar'
 import Footer from './Layout/Footer';
 import All_Products from './Pages/Product_Page'
+import Continue_Order from './Components/Continue_Order';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
                         <Routes>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/All_Products" element={<All_Products />} />
+                                <Route path="/Continue_Order" element={<Continue_Order />} />
 
                         </Routes>
                     <Footer />

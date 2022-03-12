@@ -1,10 +1,10 @@
 import React, { useContext, useReducer,useState } from 'react'
-import { Spin,Modal, Button , Badge, Select,Tooltip,Card,Input,AutoComplete, Empty,} from 'antd';
+import { Spin,Modal, Button , Badge, Select,Tooltip,Card,Input,Drawer, Empty, Space,} from 'antd';
 import { PlusOutlined , TagOutlined,HeartOutlined,MinusOutlined,ShoppingCartOutlined,SyncOutlined} from '@ant-design/icons';
 import axios from 'axios';
 import Rating from '../Components/Rating'
 import { Store } from '../Store/Store';
-import Search from 'antd/lib/transfer/search';
+import { Link } from 'react-router-dom';
 
 const reducer =(state,action)=>{
     switch (action.type) {
@@ -26,6 +26,8 @@ const reducer =(state,action)=>{
 }
 
 const Product_Card = (props) => {
+    
+    
     const [ overlayid , setoverlayid] = useState(false)
     const [modal3Visible, setmodal3Visible] = useState(false)
 
@@ -38,6 +40,9 @@ const Product_Card = (props) => {
     const [searchproduct2,setsearchproduct2] = useState('')
 
     const [searchlist,setsearchlist] = useState(true)
+
+    const[ccupon, setcupon] = useState('')
+    const[discountprice, setdiscountprice] = useState('')
 
     const products = props.products
     const { Option } = Select;
@@ -84,6 +89,7 @@ const closeCompareModal =()=>{
         const products= await axios.get(`http://localhost:8000/all_products/${id}`)
         let newproduct = products.data
         setoverlayid(newproduct._pid)
+        setVisible(true);
         let exproduct = cstate.cartItems.find(item=> item.id == newproduct._pid)
         let quantity = exproduct ?  newproduct.quantity : 1
        
@@ -106,18 +112,17 @@ const closeCompareModal =()=>{
      loading: true,
      modal2Visible: false,
      }
-
+     const [visible, setVisible] = useState(false);
+     const onClose = () => {
+       setVisible(false);
+     };
   const [state,dispatch] = useReducer (reducer, initvalue)
-  const {rating,pname,price,review,description,stock,img} = state.singleproducts
 
 //  copare grid
   const gridStyle = {
     width: '33.33%',
     textAlign: 'center',
   };
-
-
-
 
 // compare search 1
 const coparesearch1 =(e)=>{
@@ -148,11 +153,21 @@ const copareSearchProduct2= async(id)=>{
   let searchproduct = products.data
   setsearchproduct2(searchproduct)
   setsearchlist(false)
-
 }
 
+// ENTER CUPON 
+ const cuponset=(e)=>{
+  setcupon(e.target.value)
+ }
 
+const applycupon =(discount,price,cupon)=>{
+  let dispr = parseInt(discount)
+  if(cupon == ccupon){
+   setdiscountprice((dispr / price ) * 100)
+  }
+}
 
+const {rating,pname,price,review,description,stock,img,discout,cupon} = state.singleproducts
   return (
       <>
         {props.loading ? 
@@ -233,6 +248,7 @@ const copareSearchProduct2= async(id)=>{
              </h1>
              <Rating rating={rating}/> {`Total Review (${review})`}
              <h3 className='details-price'>Price:${price}</h3>
+             <h3 className='details-price'>Discount Price:${discountprice}</h3>
              <p className='details-description'>{description}</p>
 
              <div style={{marginTop:"20px"}}>
@@ -243,12 +259,17 @@ const copareSearchProduct2= async(id)=>{
              </Button.Group>
              </div>
 
-             <div>
+             <div> Colors: <Space/>
              <Select defaultValue="Choose Color" style={{ width: 120 }} onChange={handleChange}>
                 <Option value="jack">Red</Option>
                 <Option value="lucy">Back</Option>
                 <Option value="Yiminghe">Green</Option>
             </Select>
+
+            <div className='usecupon'>
+                <Input placeholder='Enter Your Cupon Code' onChange={cuponset}  />
+                <Button onClick={()=>applycupon(discout,price,cupon)}>Apply</Button>
+            </div>
 
              </div>
                 {stock <= 1 ?
@@ -379,7 +400,42 @@ const copareSearchProduct2= async(id)=>{
         
         </Modal>
 
+{/* cart drwer */}
+        <Drawer title="Shooping Cart" placement="right" onClose={onClose} visible={visible}>
+                   <div className='side-cart'>
+                     {cstate.cartItems.length  ? cstate.cartItems.map(items=>(             
+                             items.quantity <1 ? dispatch({type :"REMOVE_CART", payload: items._pid}) :   
+                             <div className='single-card' >
+                             <img src={items.img} />
+                             <div className='name-price'>
+                               <h3>{items.pname}</h3>
+                               <h4>Price : ${items.price * items.quantity}.00</h4>
+                             </div>
+                             <div className='sbutton'>
+                             <Button.Group>
+                               <Button disabled={items.quantity < 1 ? true : false} onClick={()=> quantity(items, items.quantity-1)} icon={<MinusOutlined />} />
 
+                               <p className='details-inc-dec'>{items.quantity}</p>
+                               <Button onClick={()=> quantity(items, items.quantity+1)} icon={<PlusOutlined />} />
+                           </Button.Group>
+                             </div>
+                         </div>
+                        
+                     )) 
+                    :
+                    <Empty />
+                    
+                    }
+                    </div>
+
+                    
+                       <div className='total-btn'>
+                                <h2>Total: {
+                                            //  state.cartItems.length >1 ? state.cartItems.reduce((ac,cc)=> console.log(ac,cc) ) : 0
+                                }</h2>
+                               {!cstate.cartItems.length ? <Button disabled ><Link to="/Continue_Order"> Continue Order </Link></Button> :    <Button ><Link to="/Continue_Order"> Continue_Order </Link></Button> }
+                            </div>
+        </Drawer>
 
 
 
