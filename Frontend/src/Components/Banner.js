@@ -8,13 +8,7 @@ import './style.css'
 
 const BgElement = Element.BgElement;
 
-
-
-
-
 export const Banner = () => {
-
-
 
 
   return (
@@ -26,7 +20,7 @@ export const Banner = () => {
                                        <div className='banner-text'>
                                            <h1 className='banner-title'>Find Out Your Best Furniture Here </h1>
                                            <p className='banner-para'>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                                            classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,</p>
+                                            classical Latin literature from 45 BC, making it over 2000 years old</p>
                                             <Button />
                                        </div>
                                        <div className='banner-image'>
@@ -42,7 +36,7 @@ export const Banner = () => {
                                        <div className='banner-text'>
                                            <h1 className='banner-title'>Find Out Your Best Furniture Here </h1>
                                            <p className='banner-para'>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                                            classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock</p>
+                                            classical Latin literature from 45 BC, making it </p>
                                             <Button />
                                        </div>
                                        <div className='banner-image'>
