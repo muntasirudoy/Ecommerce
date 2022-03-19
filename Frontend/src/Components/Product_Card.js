@@ -1,10 +1,11 @@
-import React, { useContext, useReducer,useState } from 'react'
-import { Spin,Modal, Button , Badge, Select,Tooltip,Card,Input,Drawer, Empty, Space,} from 'antd';
+import React, { useContext, useReducer,useState,useEffect } from 'react'
+import { Spin,Modal,Tag, Button , Badge, Select,Tooltip,Card,Input,Drawer, Empty, Space,} from 'antd';
 import { PlusOutlined , TagOutlined,HeartOutlined,MinusOutlined,ShoppingCartOutlined,SyncOutlined} from '@ant-design/icons';
 import axios from 'axios';
 import Rating from '../Components/Rating'
 import { Store } from '../Store/Store';
 import { Link } from 'react-router-dom';
+import Slider from "react-slick";
 
 const reducer =(state,action)=>{
     switch (action.type) {
@@ -25,9 +26,16 @@ const reducer =(state,action)=>{
       }
 }
 
+
 const Product_Card = (props) => {
     
-    
+  // var settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1
+  // };
     const [ overlayid , setoverlayid] = useState(false)
     const [modal3Visible, setmodal3Visible] = useState(false)
 
@@ -44,13 +52,15 @@ const Product_Card = (props) => {
     const[ccupon, setcupon] = useState('')
     const[discountprice, setdiscountprice] = useState('')
 
-    const products = props.products
-    const { Option } = Select;
 
+    const catProducts = props.products
+    const { Option } = Select;
 
      function handleChange(value) {
         console.log(`selected ${value}`);
       }
+// animation 
+
 // compare modal button fuction
     const compare= async(id)=>{
       setmodal3Visible(true)
@@ -133,7 +143,6 @@ const coparesearchproduct1= async(id)=>{
   let searchproduct = products.data
   setsearchproduct1(searchproduct)
 }
-
 // compare search 2
 const copareSearch2 =(e)=>{
   if(!e.target.value ){
@@ -143,23 +152,20 @@ const copareSearch2 =(e)=>{
     setsearchlist(true)
   }
 
-let match = products.map(items=> items.pname.includes(e.target.value) ? items : '')
+let match = catProducts.map(items=> items.pname.includes(e.target.value) ? items : '')
 setCompareSearch2(match)
 
  }
-
 const copareSearchProduct2= async(id)=>{
   const products= await axios.get(`http://localhost:8000/all_products/${id}`)
   let searchproduct = products.data
   setsearchproduct2(searchproduct)
   setsearchlist(false)
 }
-
 // ENTER CUPON 
  const cuponset=(e)=>{
   setcupon(e.target.value)
  }
-
 const applycupon =(discount,price,cupon)=>{
   let dispr = parseInt(discount)
   if(cupon == ccupon){
@@ -167,73 +173,81 @@ const applycupon =(discount,price,cupon)=>{
   }
 }
 
+
+
 const {rating,pname,price,review,description,stock,img,discout,cupon} = state.singleproducts
+
   return (
       <>
-        {props.loading ? 
 
+        {props.loading ? 
         <Spin size="large" />
         :
-        products.map(products=> (
-
+        
+         catProducts.map(products=> (
+// ........................
             <div className='p-card-body'>
-            <div className='love-compare'>
-                <HeartOutlined />
-                <Tooltip placement="topRight" title="Compare with another product">
-                    <SyncOutlined onClick={()=>compare(products._pid)} />
-                </Tooltip>
-                
-            </div>
-
-            <div className='product-image'>
-            <img src={products.img} />
-            </div>
-
-            <div className='product-name-price'>
-                <h3 className='product-name' onClick={()=>details(products._pid)}>{products.pname}</h3>
-                <h4 className='product-price'>{`$.${products.price}`}</h4>
-            </div>  
+         <div className='love-compare'>
+             <HeartOutlined />
+             <Tooltip placement="topRight" title="Compare with another product">
+                 <SyncOutlined onClick={()=>compare(products._pid)} />
+             </Tooltip>
+             {props.sold ? <Tag color="#434E6E">Sold : {products.sold}</Tag> : ""}
+             
+         </div>
          
-            {overlayid == products._pid ? 
-                  <div className='overlay'>
-                        {cstate.cartItems.map((item)=> item._pid == products._pid 
-                          ?      
-                                item.quantity == 0  ?  
-                                <div style={{color:"white", fontSize:"24px",display:"flex",justifyContent:"center",alignItems:"center",height:"100%"}} onClick={()=>addcart(products._pid)}> Add Product </div>
+         <div className='product-image' >
+         <img src={products.img}  />
+         </div>
+
+         <div className='product-name-price' >
+             <h3 className='product-name' onClick={()=>details(products._pid)}>{products.pname}</h3>
+             <h4 className='product-price'>{`$.${products.price}`}</h4>
+         </div>  
+        
+         {overlayid == products._pid ? 
+               <div className='overlay'>
+                     {cstate.cartItems.map((item)=> item._pid == products._pid 
+                       ?      
+                             item.quantity == 0  ?  
+                             <div style={{color:"white", fontSize:"24px",display:"flex",justifyContent:"center",alignItems:"center",height:"100%"}} onClick={()=>addcart(products._pid)}> Add Product </div>
+                             :
+                                 <div className='inde'>
+                                     <div style={{marginBottom: "50px",color:"white",fontSize:"18px",fontWeight:"600"}}> Total: {item.price * item.quantity} </div>
+                                   <Button.Group>
+                                       <Button onClick={()=> quantity(item, item.quantity-1)}  icon={<MinusOutlined />} />
+                                       <p className='details-inc-dec'>{item.quantity}</p>
+                                       <Button onClick={()=> quantity(item, item.quantity+1)} icon={<PlusOutlined />} />
+                                   </Button.Group>
+                                 </div>
                                 :
-                                    <div className='inde'>
-                                        <div style={{marginBottom: "50px",color:"white",fontSize:"18px",fontWeight:"600"}}> Total: {item.price * item.quantity} </div>
-                                      <Button.Group>
-                                          <Button onClick={()=> quantity(item, item.quantity-1)}  icon={<MinusOutlined />} />
-                                          <p className='details-inc-dec'>{item.quantity}</p>
-                                          <Button onClick={()=> quantity(item, item.quantity+1)} icon={<PlusOutlined />} />
-                                      </Button.Group>
-                                    </div>
-                                   :
-                                   ''
-                          )}
-                  </div>
-                        :
-                       ''
-            }
+                                ''
+                       )}
+               </div>
+                     :
+                    ''
+         }
 
 
+           <h3 className='add-cart-btn' onClick={()=>addcart(products._pid)}> Add Cart </h3>
 
-              <h3 className='add-cart-btn' onClick={()=>addcart(products._pid)}> Add Cart </h3>
+         <div className='circle-btn'>
+         <div className='main-icon'>
+             <PlusOutlined />
+         </div>
+         </div>
 
-             
-             
-            <div className='circle-btn'>
-            <div className='main-icon'>
-                <PlusOutlined />
+         {/* overlay add */}
+              
             </div>
-            </div>
-
-          {/* overlay add */}
-                 
-            </div>
-        )) 
+// ....................
+        )
+        ) 
         }
+
+
+
+
 
 {/* Details modal */}
         <Modal centered visible={state.modal2Visible} onCancel={()=>dispatch({type:"REMOVE"})}>
@@ -286,11 +300,8 @@ const {rating,pname,price,review,description,stock,img,discout,cupon} = state.si
                 }
              </div>
         </Modal>
-
   {/* compare modal */}
-  
        <Modal centered visible={modal3Visible} onCancel={closeCompareModal}>
-           
            <div className='compare-container'>
                <Card title="Copare with another product">
                     <Card.Grid style={gridStyle} hoverable={false}>
@@ -317,7 +328,7 @@ const {rating,pname,price,review,description,stock,img,discout,cupon} = state.si
                       </Card.Grid>
                     <Card.Grid style={gridStyle} hoverable={false}>
                     <Select mode="tags" style={{ width: '100%' }} placeholder="Tags Mode" onChange={coparesearch1}>
-                     { products.map(items=>(
+                     { catProducts.map(items=>(
                           <Option key={items._pid} >
                              <p onClick={()=>coparesearchproduct1(items._pid)}>{items.pname}</p>
                           </Option>
@@ -352,7 +363,6 @@ const {rating,pname,price,review,description,stock,img,discout,cupon} = state.si
 
                     </Card.Grid>
                     <Card.Grid style={gridStyle} hoverable={false}>
-
                      <Input onChange={copareSearch2} placeholder="Search your products"/>
                           {searchlist ?
                               <div className='search-list' >
@@ -390,16 +400,10 @@ const {rating,pname,price,review,description,stock,img,discout,cupon} = state.si
                         <Empty style={{marginTop:"20px"}} />   
                         
                         } 
-   
-                           
                     </Card.Grid>
-
               </Card>
-
            </div>
-        
         </Modal>
-
 {/* cart drwer */}
         <Drawer title="Shooping Cart" placement="right" onClose={onClose} visible={visible}>
                    <div className='side-cart'>
@@ -436,14 +440,7 @@ const {rating,pname,price,review,description,stock,img,discout,cupon} = state.si
                                {!cstate.cartItems.length ? <Button disabled ><Link to="/Continue_Order"> Continue Order </Link></Button> :    <Button ><Link to="/Continue_Order"> Continue_Order </Link></Button> }
                             </div>
         </Drawer>
-
-
-
-
-
-
-
-
+       
 </>
   )
 }

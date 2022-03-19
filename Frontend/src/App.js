@@ -7,6 +7,7 @@ import Navbar from './Layout/Navbar'
 import Footer from './Layout/Footer';
 import All_Products from './Pages/Product_Page'
 import Continue_Order from './Components/Continue_Order';
+import Categories_Filter from './Components/Categories_Filter';
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
                                 <Route path="/" element={<Home />} />
                                 <Route path="/All_Products" element={<All_Products />} />
                                 <Route path="/Continue_Order" element={<Continue_Order />} />
+                                {/* <Route path="/Categories_Filter" element={<Categories_Filter />} /> */}
 
                         </Routes>
                     <Footer />
