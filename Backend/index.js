@@ -1,47 +1,34 @@
 import express from 'express'
-import ProductsData from './ProductsData.js'
 import cors from 'cors'
-
-
+import bodyParser from "body-parser"
+import dbConnection from './Config/dbConnection.js'
 const app = express()
 app.use(cors())
+// parse application/json
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+dbConnection()
+
+
+// all routers start
+import allProducts from './Routes/Products/allProducts.js'
+import bestSellingProducts from './Routes/Products/bestSellingProducts.js'
+import individualProduct from './Routes/Products/individualProduct.js'
+import prductCategory from './Routes/Products/prductCategory.js'
+// all routers end
+
 
 
 
 // ALL PRODUCTS
-app.get('/all_products', function (req, res) {
-    res.send(ProductsData)
-  })
-
+app.use('/api/all_products', allProducts )
+// INDIVIDUAL 
+app.use('/all_products/:id', individualProduct )
 // BEST SELLING
-  app.get('/bestsell', function (req, res) {
-    const bestProduct = ProductsData.filter((item)=>{
-      if(item.sold >= 250){
-        return item
-      }
-    })
-    res.send(bestProduct)
-
-  })
-
-  // INDIVIDUAL 
-app.get('/all_products/:id', function (req, res) {
-    const singleproduct = ProductsData.find((item)=>item._pid == req.params.id)
-    res.send(singleproduct)
-  })
-
-  // CATEGORY 
-  app.get('/:cat', function (req, res) {
-    const catProduct = ProductsData.filter((item)=>{
-      if(item.category == req.params.cat){
-        return item
-      }
-    })
-    res.send(catProduct)
-  })
-
-
- // category 
+app.use('/api/bestSell', bestSellingProducts )
+// CATEGORY 
+app.get('/:cat', prductCategory )
 
 
 

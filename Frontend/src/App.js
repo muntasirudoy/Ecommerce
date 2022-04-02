@@ -8,6 +8,7 @@ import Footer from './Layout/Footer';
 import All_Products from './Pages/Product_Page'
 import Continue_Order from './Components/Continue_Order';
 import Categories_Filter from './Components/Categories_Filter';
+import  Admin  from './Dashboard/Admin';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
                                 <Route path="/" element={<Home />} />
                                 <Route path="/All_Products" element={<All_Products />} />
                                 <Route path="/Continue_Order" element={<Continue_Order />} />
+                                <Route path="/Admin" element={<Admin />} />
                                 {/* <Route path="/Categories_Filter" element={<Categories_Filter />} /> */}
 
                         </Routes>
